@@ -24,16 +24,9 @@ func main() {
 		Password: "",
 	})
 
-	err := rdb.Set("client:kwiedor", "Jonas Kwiedor", 0).Err()
+	err := rdb.Del("client:kwiedor").Err()
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	client, err := rdb.Get("client:kwiedor").Result()
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println(client)
 
 }
