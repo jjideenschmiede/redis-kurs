@@ -24,15 +24,11 @@ func main() {
 		Password: "",
 	})
 
-	fields := make(map[string]interface{})
-
-	fields["name"] = "Jonas Kwiedor"
-	fields["age"] = 23
-	fields["job"] = "Developer"
-
-	err := rdb.HMSet("client:kwiedor", fields).Err()
+	result, err := rdb.HDel("client:kwiedor", "age").Result()
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	fmt.Println(result)
 
 }
