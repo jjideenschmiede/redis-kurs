@@ -24,7 +24,13 @@ func main() {
 		Password: "",
 	})
 
-	err := rdb.Del("client:kwiedor").Err()
+	fields := make(map[string]interface{})
+
+	fields["name"] = "Jonas Kwiedor"
+	fields["age"] = 23
+	fields["job"] = "Developer"
+
+	err := rdb.HMSet("client:kwiedor", fields).Err()
 	if err != nil {
 		fmt.Println(err)
 	}
